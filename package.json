@@ -1,0 +1,27 @@
+{
+  "name": "341project",
+  "version": "1.0.0",
+  "description": "API for CSE341",
+  "homepage": "https://github.com/FlozzyDev/341Project#readme",
+  "bugs": {
+    "url": "https://github.com/FlozzyDev/341Project/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FlozzyDev/341Project.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
