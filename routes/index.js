@@ -1,9 +1,7 @@
+/* index will be the single point of entry for all routes */ 
 const routes = require('express').Router();
 
-const myController = require('../controllers');
-
-routes.get('/', myController.awesomeFunction);
-routes.get('/favoriteToy', myController.favoriteToy);
-
+routes.use('/', require('./landing')); // landing 'page' 
+routes.use('/contacts', require('./contacts')); // any contact related requests
 
 module.exports = routes;

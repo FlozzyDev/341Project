@@ -1,9 +1,23 @@
-var express = require('express');
-var app = express();
-const port = process.env.PORT || 3000
+/* This will be only for startup, connecting the app and connecting to the DB */
 
-app.use('/', require('./routes'));
+require('dotenv').config();
+const app = require('./app');
+const initDb = require('./db/connection');
 
-app.listen(port, ()=> {
-    console.log(`Server is running on port ${port}`);
-})
+const port = process.env.PORT || 3000;
+
+const serverStart = async () => {
+    try {
+        await initDb();
+        console.log('The database has successfully connected');
+
+        app.listen(port, () => {
+            console.log (`Server is running on ${port}`);
+        });
+    } catch (error) {
+        console.error('Failed to start server:', error);
+        process.exit(1);
+    }
+};
+
+serverStart();
