@@ -4,9 +4,22 @@ GET http://localhost:3000 HTTP/1.1
 // contacts (get all contacts)
 GET http://localhost:3000/contacts HTTP/1.1
 
-// contacts/:id - return only one contact from the collection using default objectID (Dwight)
+// contacts/id - return only one contact from the collection using default objectID (Dwight)
 GET http://localhost:3000/contacts/6810def35ae8820c11051025
 
-// contacts/:id - return only one contact from the collection using default objectID (Michael)
+// contacts/id - return only one contact from the collection using default objectID (Michael)
 GET http://localhost:3000/contacts/6810dec15ae8820c1105101f
 
+//----------------------------------------------------------------------------
+
+//Landing 
+GET https://three41project-f9tj.onrender.com/
+
+// contacts (get all)
+GET https://three41project-f9tj.onrender.com/contacts
+
+// contact/id - return only one (pam)
+GET https://three41project-f9tj.onrender.com/contacts/6810dee55ae8820c11051023
+
+// contact/id - return only one (angelia) 
+GET https://three41project-f9tj.onrender.com/contacts/6810deff5ae8820c11051026
