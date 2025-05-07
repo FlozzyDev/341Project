@@ -7,8 +7,33 @@ GET http://localhost:3000/contacts HTTP/1.1
 // contacts/id - return only one contact from the collection using default objectID (Dwight)
 GET http://localhost:3000/contacts/6810def35ae8820c11051025
 
-// contacts/id - return only one contact from the collection using default objectID (Michael)
-GET http://localhost:3000/contacts/6810dec15ae8820c1105101f
+// POST - Create new Contact
+POST http://localhost:3000/contacts HTTP/1.1
+Content-Type: application/json
+
+{
+  "firstName": "Pupa",
+  "lastName": "Hales",
+  "email": "phale@hotmail.com",
+  "favoriteColor": "blue",
+  "birthday": "1991-09-09"
+}
+
+// PUT - Update a request that already exists targeting the _id (DWIGHT)
+PUT http://localhost:3000/contacts/6810def35ae8820c11051025 HTTP/1.1
+Content-Type: application/json
+
+{
+  "firstName": "Dwight",
+  "lastName": "Schrute",
+  "email": "dSchrute@hotmail.com",
+  "favoriteColor": "yellow",
+  "birthday": "1971-01-01"
+}
+
+// DELETE - Remove a record from the DB targeting the _id - delete the record we create. 
+
+DELETE http://localhost:3000/contacts/681b9179859fa33d6ef5d53b HTTP/1.1
 
 //----------------------------------------------------------------------------
 
