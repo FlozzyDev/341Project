@@ -48,3 +48,31 @@ GET https://three41project-f9tj.onrender.com/contacts/6810dee55ae8820c11051023
 
 // contact/id - return only one (angelia) 
 GET https://three41project-f9tj.onrender.com/contacts/6810deff5ae8820c11051026
+
+// POST - Create new Contact
+POST https://three41project-f9tj.onrender.com/contacts HTTP/1.1
+Content-Type: application/json
+
+{
+  "firstName": "Pupa",
+  "lastName": "Hales",
+  "email": "phale@hotmail.com",
+  "favoriteColor": "blue",
+  "birthday": "1992-08-08"
+}
+
+// PUT - Update a request that already exists targeting the _id (DWIGHT)
+PUT https://three41project-f9tj.onrender.com/contacts/6810def35ae8820c11051025 HTTP/1.1
+Content-Type: application/json
+
+{
+  "firstName": "Dwight",
+  "lastName": "Schrute",
+  "email": "dSchrute@hotmail.com",
+  "favoriteColor": "yellow",
+  "birthday": "1978-03-03"
+}
+
+// DELETE - Remove a record from the DB targeting the _id - delete the record we create. 
+
+DELETE https://three41project-f9tj.onrender.com/contacts/681bfc9fa872d1838fc8b606 HTTP/1.1
