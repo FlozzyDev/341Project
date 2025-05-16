@@ -5,9 +5,9 @@
     "description": "API for managing contacts",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "three41project-f9tj.onrender.com",
   "basePath": "/",
-  "schemes": ["http"],
+  "schemes": ["https"],
   "consumes": ["application/json"],
   "produces": ["application/json"],
   "paths": {

@@ -1,5 +1,14 @@
 const swaggerAutogen = require("swagger-autogen")();
 
+const host =
+  process.env.NODE_ENV === "production"
+    ? "three41project-f9tj.onrender.com" // When deployed to render
+    : "localhost:3000"; // for local dev
+
+const schemes = process.env.NODE_ENV === "production" ? ["https"] : ["http"]; // if deployed on prod, https
+
+/* IF TESTING LOCAL, REMEMBER TO SWITCH BACK THE HOST AND SCHEMES IN SWAGGER.JSON!*/
+
 const doc = {
   info: {
     title: "Contacts API",
