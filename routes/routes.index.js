@@ -6,7 +6,7 @@ const swaggerDocument = require("../swagger.json");
 routes.use("/api-docs", swaggerUi.serve);
 routes.get("/api-docs", swaggerUi.setup(swaggerDocument));
 
-routes.use("/", require("./landing")); // landing 'page'
-routes.use("/contacts", require("./contacts")); // any contact related requests
+routes.use("/", require("./routes.landing")); // landing 'page'
+routes.use("/contacts", require("./routes.contacts")); // any contact related requests
 
 module.exports = routes;

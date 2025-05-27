@@ -17,6 +17,12 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
           }
         }
       }
@@ -27,7 +33,7 @@
         "produces": ["application/json"],
         "responses": {
           "200": {
-            "description": "An array of contacts",
+            "description": "Return all contacts",
             "schema": {
               "type": "array",
               "items": {
@@ -36,7 +42,10 @@
             }
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
           }
         }
       },
@@ -48,7 +57,7 @@
           {
             "name": "body",
             "in": "body",
-            "description": "New contact information - all fields are required",
+            "description": "Create a new contact - all fields are required",
             "required": true,
             "schema": {
               "$ref": "#/definitions/Contact"
@@ -61,6 +70,19 @@
             "schema": {
               "type": "string",
               "example": "Created new contact for 60d21b4667d0d8992e610c85"
+            }
+          },
+          "400": {
+            "description": "Validation error - invalid data entered",
+            "schema": {
+              "$ref": "#/definitions/ValidationError"
+            }
+          },
+          "409": {
+            "description": "Duplicate email found",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse",
+              "example": "The email already exists for that User ID"
             }
           },
           "500": {
@@ -87,15 +109,23 @@
         ],
         "responses": {
           "200": {
-            "description": "A single contact",
+            "description": "A single contact was updated",
             "schema": {
               "$ref": "#/definitions/Contact"
             }
           },
-          "404": {
-            "description": "Contact not found",
+          "400": {
+            "description": "Invalid ID",
             "schema": {
-              "$ref": "#/definitions/ErrorResponse"
+              "$ref": "#/definitions/ValidationError",
+              "example": "Invalid data was added"
+            }
+          },
+          "404": {
+            "description": "No contact found for that ID",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse",
+              "example": "Could not find that user"
             }
           },
           "500": {
@@ -129,13 +159,29 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "Contact updated successfully"
+          "200": {
+            "description": "Contact updated successfully",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Updated ID 60123361625351c"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation error - invalid data entered",
+            "schema": {
+              "$ref": "#/definitions/ValidationError"
+            }
           },
           "404": {
             "description": "Contact not found",
             "schema": {
-              "$ref": "#/definitions/ErrorResponse"
+              "$ref": "#/definitions/ErrorResponse",
+              "example": "Could not find that user"
             }
           },
           "500": {
@@ -174,10 +220,17 @@
               }
             }
           },
+          "400": {
+            "description": "Validation error - invalid data entered",
+            "schema": {
+              "$ref": "#/definitions/ValidationError"
+            }
+          },
           "404": {
             "description": "Contact not found",
             "schema": {
-              "$ref": "#/definitions/ErrorResponse"
+              "$ref": "#/definitions/ErrorResponse",
+              "example": "Could not find that user"
             }
           },
           "500": {
@@ -252,9 +305,22 @@
     "ErrorResponse": {
       "type": "object",
       "properties": {
-        "error": {
+        "success": {
+          "type": "boolean",
+          "example": "false"
+        },
+        "message": {
           "type": "string",
-          "example": "Error message details"
+          "example": "Something went wrong. Please try again later. Or never."
+        }
+      },
+      "ValidationError": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "lastName is required."
+          }
         }
       }
     }

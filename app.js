@@ -1,6 +1,7 @@
 /* The actual app and middleware placed here */
 
 const express = require("express");
+const errorHandler = require("./middleware/mw.errorHandler");
 const cors = require("cors");
 const app = express();
 
@@ -13,13 +14,10 @@ app.use(
     ],
   })
 );
-app.use(express.json()); // parse incoming JSON
+app.use(express.json());
 
-app.use("/", require("./routes/index"));
+app.use("/", require("./routes/routes.index"));
 
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({ error: "There was an error" });
-});
+app.use(errorHandler);
 
 module.exports = app;
